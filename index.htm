@@ -1,0 +1,112 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="styles.css">
+	<title>Giới thiệu nhóm</title>
+	
+	<script src="ball.js"></script>
+<script>
+ 
+var _canvas;
+var _context;
+var _ball;
+var _balls = [];
+var _counter = 0;
+function draw(){
+ 
+    _context.clearRect(0,0,_canvas.width,_canvas.height);
+ 
+    for(var i = 0; i < _balls.length; i++){
+        _balls[i].draw(_context,(i+1)/10);
+    }
+    _ball.draw(_context);
+}
+function update(){
+    _counter++;
+    if(_counter == 5){
+        traceBall(_ball);
+        _counter = 0;
+    }
+    draw();
+    _ball.move();
+    _ball.checkCollision();
+ 
+}
+function traceBall(ball){
+    var b = new Ball;
+    b.cx = ball.cx;
+    b.cy = ball.cy;
+ 
+    _balls.push(b);
+    if(_balls.length>10)
+        _balls.splice(0,1);
+}
+window.onload = function(){
+ 
+    var interval = 10;
+    _canvas = document.getElementById("canvas");
+    _context = _canvas.getContext("2d");
+    _ball = new Ball(_canvas.width,_canvas.height);
+ 
+    window.setInterval(function(){
+        update();
+    },interval);
+ 
+}
+</script>
+	<style>
+        
+        body{
+            font-family:Times New Roman;
+            font-size:15px;
+            width:1000px;
+            margin:0px auto;
+        }
+        
+	</style>
+</head>
+<body>
+	
+    <div id="top">
+		<img src="banner.jpg" border="2" width="997" height ="250">
+	</div>
+    <div id="cssmenu">
+        <ul>
+            <li class='active'><a href="./index.htm">Home</a></li>
+         
+        </ul>
+    </div>
+    <div id="main">
+        <div id="left">
+            <ul>
+                <li><a>1212172 - Phan Quốc Khánh</a></li>
+                
+               
+            </ul>
+        </div>
+        <div id="center">
+		
+			<div id="center-left">
+				<div id="Canhle1">
+				
+					<div id="Canhchu" style="position: absolute">
+						<video src="video.mp4"  width="400" height="350" controls autoplay>
+    
+						</video>
+						<canvas id="canvas" width="300px" height="300px" style="border: 1px solid gray;"></canvas>
+					</div>
+				
+					
+				</div>
+			</div>
+			
+
+		</div>
+		 
+        
+		
+    </div>
+    <div id="footer">^_^</div>
+</body>
+</html>
