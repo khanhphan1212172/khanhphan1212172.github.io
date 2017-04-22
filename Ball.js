@@ -12,7 +12,7 @@ Ball.prototype.draw = function(context,alpha){
     if(!alpha)
         alpha = 255;
     context.beginPath();
-    context.fillStyle = "rgba(255, 100, 100," + alpha + ")";
+    context.fillStyle = "rgba(100, 100, 100," + alpha + ")";
     context.arc(this.cx,this.cy,this.radius,0,Math.PI*2,true);
     context.closePath();
     context.fill();
